@@ -10,12 +10,12 @@ Supported languages: C/C++, Delphi/Lazarus
 
 <img src="http://i59.tinypic.com/ruzmlv.png" border="0">
 
-<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-21?styleid=106324&&currency=USD">Donate $4</a>
+<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-21?styleid=106324&&currency=USD" target="_blank">Donate $4</a>
 
-<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-22?styleid=106324&&currency=USD">Donate $10</a>
+<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-22?styleid=106324&&currency=USD" target="_blank">Donate $10</a>
 
-<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-23?styleid=106324&&currency=USD">Donate $20</a>
+<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-23?styleid=106324&&currency=USD" target="_blank">Donate $20</a>
 
-<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-24?styleid=106324&&currency=USD">Donate $50</a>
+<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-24?styleid=106324&&currency=USD" target="_blank">Donate $50</a>
 
 
