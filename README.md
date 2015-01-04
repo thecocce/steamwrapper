@@ -8,8 +8,8 @@ Supported languages: C/C++, Delphi/Lazarus
 
 We really need your help! Please support us!
 
-Donate $4
-https://shopper.mycommerce.com/checkout/cart/new/55005-21?styleid=106324&&currency=USD
+
+<a href="https://shopper.mycommerce.com/checkout/cart/new/55005-21?styleid=106324&&currency=USD">Donate $4</a>
 
 Donate $10
 https://shopper.mycommerce.com/checkout/cart/new/55005-22?styleid=106324&&currency=USD
