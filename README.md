@@ -8,7 +8,8 @@ Supported languages: C/C++, Delphi/Lazarus
 
 <b>We really need your help! Please support us!</b>
 
-http://transmisson-remote-gui.googlecode.com/svn/wiki/donate2.png
+ <img src="http://transmisson-remote-gui.googlecode.com/svn/wiki/donate2.png"> 
+
 
 <a href="https://shopper.mycommerce.com/checkout/cart/new/55005-21?styleid=106324&&currency=USD">Donate $4</a>
 
