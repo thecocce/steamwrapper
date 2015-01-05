@@ -1,7 +1,7 @@
 VALVE Steam® API Wrapper
 ==========================
 
-More than 700 functions, 6700+ lines of code. Full SteamAPI + helpers classes is available.
+Full SteamAPI + helpers is available.
 
 Supported languages: C/C++, Delphi/Lazarus
 
