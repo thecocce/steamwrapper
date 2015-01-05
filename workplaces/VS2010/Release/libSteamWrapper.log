@@ -1,0 +1,68 @@
+﻿Построение начато 29.12.2014 18:01:11.
+     1>Проект "D:\AS3D\product\workplaces\VS2010\libSteamWrapper.vcxproj" в узле 2 (целевые объекты rebuild).
+     1>InitializeBuildStatus:
+         Создание "Release\libSteamWrapper.unsuccessfulbuild", так как было задано "AlwaysCreate".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D LIBSTEAMWRAPPER_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\src\cSteamAppList.cpp ..\..\src\cSteamApps.cpp ..\..\src\cSteamCallbacks.cpp ..\..\src\cSteamClient.cpp ..\..\src\cSteamController.cpp ..\..\src\cSteamFriends.cpp ..\..\src\cSteamGameServer.cpp ..\..\src\cSteamGameServerStats.cpp ..\..\src\cSteamHTMLSurface.cpp ..\..\src\cSteamHTTP.cpp ..\..\src\cSteamMatchmaking.cpp ..\..\src\cSteamMusic.cpp ..\..\src\cSteamMusicRemote.cpp ..\..\src\cSteamNetworking.cpp ..\..\src\cSteamRemoteStorage.cpp ..\..\src\cSteamScreenshots.cpp ..\..\src\cSteamSystem.cpp ..\..\src\cSteamUGC.cpp ..\..\src\cSteamUnifiedMessages.cpp ..\..\src\cSteamUser.cpp ..\..\src\cSteamUserStats.cpp ..\..\src\cSteamUtils.cpp ..\..\src\cSteamVR.cpp
+         cSteamAppList.cpp
+         cSteamApps.cpp
+         cSteamCallbacks.cpp
+         cSteamClient.cpp
+         cSteamController.cpp
+         cSteamFriends.cpp
+         cSteamGameServer.cpp
+         cSteamGameServerStats.cpp
+         cSteamHTMLSurface.cpp
+         cSteamHTTP.cpp
+         cSteamMatchmaking.cpp
+         cSteamMusic.cpp
+         cSteamMusicRemote.cpp
+         cSteamNetworking.cpp
+         cSteamRemoteStorage.cpp
+         cSteamScreenshots.cpp
+         cSteamSystem.cpp
+         cSteamUGC.cpp
+         cSteamUnifiedMessages.cpp
+         cSteamUser.cpp
+         Компиляция...
+         cSteamUserStats.cpp
+         cSteamUtils.cpp
+         cSteamVR.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\release\libSteamWrapper.dll" /INCREMENTAL:NO /NOLOGO steam_api.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"Exports.def" /MANIFEST /ManifestFile:"Release\libSteamWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"D:\AS3D\product\release\libSteamWrapper.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\release\libSteamWrapper.lib" /MACHINE:X86 /DLL Release\cSteamAppList.obj
+         Release\cSteamApps.obj
+         Release\cSteamCallbacks.obj
+         Release\cSteamClient.obj
+         Release\cSteamController.obj
+         Release\cSteamFriends.obj
+         Release\cSteamGameServer.obj
+         Release\cSteamGameServerStats.obj
+         Release\cSteamHTMLSurface.obj
+         Release\cSteamHTTP.obj
+         Release\cSteamMatchmaking.obj
+         Release\cSteamMusic.obj
+         Release\cSteamMusicRemote.obj
+         Release\cSteamNetworking.obj
+         Release\cSteamRemoteStorage.obj
+         Release\cSteamScreenshots.obj
+         Release\cSteamSystem.obj
+         Release\cSteamUGC.obj
+         Release\cSteamUnifiedMessages.obj
+         Release\cSteamUser.obj
+         Release\cSteamUserStats.obj
+         Release\cSteamUtils.obj
+         Release\cSteamVR.obj
+            Создается библиотека ..\..\release\libSteamWrapper.lib и объект ..\..\release\libSteamWrapper.exp
+         Создание кода
+         Создание кода завершено
+         libSteamWrapper.vcxproj -> D:\AS3D\product\workplaces\VS2010\..\..\release\libSteamWrapper.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"..\..\release\libSteamWrapper.dll;#2" /manifest Release\libSteamWrapper.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Файл "Release\libSteamWrapper.unsuccessfulbuild" удаляется.
+         Обращение к "Release\libSteamWrapper.lastbuildstate".
+     1>Построение проекта "D:\AS3D\product\workplaces\VS2010\libSteamWrapper.vcxproj" завершено (целевые объекты rebuild).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:17.54

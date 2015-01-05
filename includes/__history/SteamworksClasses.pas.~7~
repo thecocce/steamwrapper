@@ -1,0 +1,50 @@
+unit SteamworksClasses;
+
+interface
+
+uses Steamworks, SteamworksTypes;
+
+Type
+  THTMLSurface = class
+  private
+    class var ID: integer;
+    class procedure OnCloseBrowser; static; cdecl;
+    class procedure OnNeedsPaint(pBGRA: pAnsiChar; Wide, Tall, UpdateX, UpdateY, UpdateWide, UpdateTall, ScrollX, ScrollY: uint32; PageScale: single; PageSerial: uint32); cdecl;
+    class procedure OnStartRequest(URL, Target, PostData: pAnsiChar; IsRedirect: boolean); cdecl;
+    class procedure OnFinishedRequest(URL: pAnsiChar; PageTitle: pAnsiChar); cdecl;
+    class procedure OnURLChanged(URL, PostData: pAnsiChar; IsRedirect: boolean; PageTitle: pAnsiChar; NewNavigation: boolean); cdecl;
+    class procedure OnOpenLinkInNewTab(URL: pAnsiChar); cdecl;
+    class procedure OnChangedTitle(Title: pAnsiChar); cdecl;
+    class procedure OnSearchResults(Results, CurrentMatch: uint32); cdecl;
+    class procedure OnCanGoBackAndForward(CanGoBack, CanGoForward: boolean); cdecl;
+    class procedure OnHorizontalScroll(ScrollMax, ScrollCurrent: uint32; PageScale: single; Visible: boolean; PageSize: uint32); cdecl;
+    class procedure OnVerticalScroll(ScrollMax, ScrollCurrent: uint32; PageScale: single; Visible: boolean; PageSize: uint32); cdecl;
+    class procedure OnLinkAtPosition(X, Y: uint32; URL: pAnsiChar; Input, LiveLink: boolean); cdecl;
+    class procedure OnJSAlert(Msg: pAnsiChar); cdecl;
+    class procedure OnJSConfirm(Msg: pAnsiChar); cdecl;
+    class procedure OnFileOpenDialog(Title, InitialFile: pAnsiChar); cdecl;
+    class procedure OnComboNeedsPaint(pBGRA: pAnsiChar; Width: uint32; Height: uint32); cdecl;
+    class procedure OnShowPopup(); cdecl;
+    class procedure OnHidePopup(); cdecl;
+    class procedure OnSizePopup(X: uint32; Y: uint32; Width: uint32; Height: uint32); cdecl;
+    class procedure OnNewWindow(URL: pAnsiChar; X: uint32; Y: uint32; Wide: uint32; Tall: uint32); cdecl;
+    class procedure OnSetCursor(MouseCursor: TMouseCursor); cdecl;
+    class procedure OnStatusText(Msg: pAnsiChar); cdecl;
+    class procedure OnShowToolTip(Msg: pAnsiChar); cdecl;
+    class procedure OnUpdateToolTip(Msg: pAnsiChar); cdecl;
+    class procedure OnHideToolTip(); cdecl;
+    class procedure OnBrowserReady(IOFailure: boolean); cdecl;
+  public
+    procedure Init(UserAgen, UserCSS: AnsiString);
+  end;
+
+implementation
+
+{ THTMLSurface }
+
+procedure THTMLSurface.Init(UserAgen, UserCSS: AnsiString);
+begin
+
+end;
+
+end.

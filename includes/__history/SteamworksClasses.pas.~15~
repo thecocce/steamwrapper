@@ -1,0 +1,25 @@
+unit SteamworksClasses;
+
+interface
+
+uses Steamworks, SteamworksTypes;
+
+Type
+  THTMLSurface = record
+  public
+    ID: integer;
+    Handler: THTMLSurfaceCallbacks;
+    procedure Init(UserAgent, UserCSS: AnsiString);
+  end;
+
+implementation
+
+{ THTMLSurface }
+
+procedure THTMLSurface.Init(UserAgent, UserCSS: AnsiString);
+begin
+  ID := SteamHTMLSurface_CreateBrowser(Handler, @UserAgent[1], @UserCSS[1]);
+end;
+
+
+end.

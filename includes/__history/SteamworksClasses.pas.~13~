@@ -1,0 +1,177 @@
+unit SteamworksClasses;
+
+interface
+
+uses Steamworks, SteamworksTypes;
+
+Type
+  THTMLSurface = record
+  public
+    ID: integer;
+    Handler: THTMLSurfaceCallbacks;
+    procedure Init(UserAgent, UserCSS: AnsiString);
+  end;
+
+implementation
+
+{ THTMLSurface }
+
+procedure THTMLSurface.Init(UserAgent, UserCSS: AnsiString);
+begin
+  Handler.OnCloseBrowser := OnCloseBrowserCallback;
+  Handler.OnNeedsPaint := OnNeedsPaintCallback;
+  Handler.OnStartRequest := OnStartRequestCallback;
+  Handler.OnFinishedRequest := OnFinishedRequestCallback;
+  Handler.OnBrowserReady := OnBrowserReadyCallback;
+  Handler.OnComboNeedsPaint := OnComboNeedsPaint;
+  Handler.OnSetCursor := OnSetCursor;
+
+  ID := SteamHTMLSurface_CreateBrowser(Handler, UserAgent, UserCSS);
+end;
+
+
+
+class procedure THTMLSurface.OnBrowserReadyCallback(IOFailure: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnCanGoBackAndForwardCallback(CanGoBack,
+  CanGoForward: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnChangedTitleCallback(Title: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnCloseBrowserCallback;
+begin
+
+end;
+
+class procedure THTMLSurface.OnComboNeedsPaintCallback(pBGRA: pAnsiChar; Width,
+  Height: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnFileOpenDialogCallback(Title,
+  InitialFile: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnFinishedRequestCallback(URL,
+  PageTitle: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnHidePopupCallback;
+begin
+
+end;
+
+class procedure THTMLSurface.OnHideToolTipCallback;
+begin
+
+end;
+
+class procedure THTMLSurface.OnHorizontalScrollCallback(ScrollMax,
+  ScrollCurrent: uint32; PageScale: single; Visible: boolean; PageSize: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnJSAlertCallback(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnJSConfirmCallback(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnLinkAtPositionCallback(X, Y: uint32;
+  URL: pAnsiChar; Input, LiveLink: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnNeedsPaintCallback(pBGRA: pAnsiChar; Wide, Tall,
+  UpdateX, UpdateY, UpdateWide, UpdateTall, ScrollX, ScrollY: uint32;
+  PageScale: single; PageSerial: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnNewWindowCallback(URL: pAnsiChar; X, Y, Wide,
+  Tall: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnOpenLinkInNewTabCallback(URL: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnSearchResultsCallback(Results,
+  CurrentMatch: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnSetCursorCallback(MouseCursor: TMouseCursor);
+begin
+
+end;
+
+class procedure THTMLSurface.OnShowPopupCallback;
+begin
+
+end;
+
+class procedure THTMLSurface.OnShowToolTipCallback(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnSizePopupCallback(X, Y, Width, Height: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnStartRequestCallback(URL, Target,
+  PostData: pAnsiChar; IsRedirect: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnStatusTextCallback(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnUpdateToolTipCallback(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnURLChangedCallback(URL, PostData: pAnsiChar;
+  IsRedirect: boolean; PageTitle: pAnsiChar; NewNavigation: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnVerticalScrollCallback(ScrollMax,
+  ScrollCurrent: uint32; PageScale: single; Visible: boolean; PageSize: uint32);
+begin
+
+end;
+
+end.

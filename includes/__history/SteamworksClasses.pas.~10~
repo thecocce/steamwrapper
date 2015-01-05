@@ -1,0 +1,191 @@
+unit SteamworksClasses;
+
+interface
+
+uses Steamworks, SteamworksTypes;
+
+Type
+  THTMLSurface = class
+  private
+    class var ID: integer;
+    class var Handler: THTMLSurfaceCallbacks;
+    class procedure OnCloseBrowser; static; cdecl;
+    class procedure OnNeedsPaint(pBGRA: pAnsiChar; Wide, Tall, UpdateX, UpdateY, UpdateWide, UpdateTall, ScrollX, ScrollY: uint32; PageScale: single; PageSerial: uint32); static; cdecl;
+    class procedure OnStartRequest(URL, Target, PostData: pAnsiChar; IsRedirect: boolean); static; cdecl;
+    class procedure OnFinishedRequest(URL: pAnsiChar; PageTitle: pAnsiChar); static; cdecl;
+    class procedure OnURLChanged(URL, PostData: pAnsiChar; IsRedirect: boolean; PageTitle: pAnsiChar; NewNavigation: boolean); static; cdecl;
+    class procedure OnOpenLinkInNewTab(URL: pAnsiChar); static; cdecl;
+    class procedure OnChangedTitle(Title: pAnsiChar); static; cdecl;
+    class procedure OnSearchResults(Results, CurrentMatch: uint32); static; cdecl;
+    class procedure OnCanGoBackAndForward(CanGoBack, CanGoForward: boolean); static; cdecl;
+    class procedure OnHorizontalScroll(ScrollMax, ScrollCurrent: uint32; PageScale: single; Visible: boolean; PageSize: uint32); static; cdecl;
+    class procedure OnVerticalScroll(ScrollMax, ScrollCurrent: uint32; PageScale: single; Visible: boolean; PageSize: uint32); static; cdecl;
+    class procedure OnLinkAtPosition(X, Y: uint32; URL: pAnsiChar; Input, LiveLink: boolean); static; cdecl;
+    class procedure OnJSAlert(Msg: pAnsiChar); static; cdecl;
+    class procedure OnJSConfirm(Msg: pAnsiChar); static; cdecl;
+    class procedure OnFileOpenDialog(Title, InitialFile: pAnsiChar); static; cdecl;
+    class procedure OnComboNeedsPaint(pBGRA: pAnsiChar; Width: uint32; Height: uint32); static; cdecl;
+    class procedure OnShowPopup(); static; cdecl;
+    class procedure OnHidePopup(); static; cdecl;
+    class procedure OnSizePopup(X: uint32; Y: uint32; Width: uint32; Height: uint32); static; cdecl;
+    class procedure OnNewWindow(URL: pAnsiChar; X: uint32; Y: uint32; Wide: uint32; Tall: uint32); static; cdecl;
+    class procedure OnSetCursor(MouseCursor: TMouseCursor); static; cdecl;
+    class procedure OnStatusText(Msg: pAnsiChar); static; cdecl;
+    class procedure OnShowToolTip(Msg: pAnsiChar); static; cdecl;
+    class procedure OnUpdateToolTip(Msg: pAnsiChar); static; cdecl;
+    class procedure OnHideToolTip(); static; cdecl;
+    class procedure OnBrowserReady(IOFailure: boolean); static; cdecl;
+  public
+    procedure Init(UserAgen, UserCSS: AnsiString);
+  end;
+
+implementation
+
+{ THTMLSurface }
+
+procedure THTMLSurface.Init(UserAgen, UserCSS: AnsiString);
+begin
+
+end;
+
+class procedure THTMLSurface.OnBrowserReady(IOFailure: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnCanGoBackAndForward(CanGoBack,
+  CanGoForward: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnChangedTitle(Title: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnCloseBrowser;
+begin
+
+end;
+
+class procedure THTMLSurface.OnComboNeedsPaint(pBGRA: pAnsiChar; Width,
+  Height: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnFileOpenDialog(Title, InitialFile: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnFinishedRequest(URL, PageTitle: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnHidePopup;
+begin
+
+end;
+
+class procedure THTMLSurface.OnHideToolTip;
+begin
+
+end;
+
+class procedure THTMLSurface.OnHorizontalScroll(ScrollMax,
+  ScrollCurrent: uint32; PageScale: single; Visible: boolean; PageSize: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnJSAlert(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnJSConfirm(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnLinkAtPosition(X, Y: uint32; URL: pAnsiChar;
+  Input, LiveLink: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnNeedsPaint(pBGRA: pAnsiChar; Wide, Tall, UpdateX,
+  UpdateY, UpdateWide, UpdateTall, ScrollX, ScrollY: uint32; PageScale: single;
+  PageSerial: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnNewWindow(URL: pAnsiChar; X, Y, Wide,
+  Tall: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnOpenLinkInNewTab(URL: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnSearchResults(Results, CurrentMatch: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnSetCursor(MouseCursor: TMouseCursor);
+begin
+
+end;
+
+class procedure THTMLSurface.OnShowPopup;
+begin
+
+end;
+
+class procedure THTMLSurface.OnShowToolTip(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnSizePopup(X, Y, Width, Height: uint32);
+begin
+
+end;
+
+class procedure THTMLSurface.OnStartRequest(URL, Target, PostData: pAnsiChar;
+  IsRedirect: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnStatusText(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnUpdateToolTip(Msg: pAnsiChar);
+begin
+
+end;
+
+class procedure THTMLSurface.OnURLChanged(URL, PostData: pAnsiChar;
+  IsRedirect: boolean; PageTitle: pAnsiChar; NewNavigation: boolean);
+begin
+
+end;
+
+class procedure THTMLSurface.OnVerticalScroll(ScrollMax, ScrollCurrent: uint32;
+  PageScale: single; Visible: boolean; PageSize: uint32);
+begin
+
+end;
+
+end.

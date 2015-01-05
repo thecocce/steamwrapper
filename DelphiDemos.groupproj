@@ -1,0 +1,120 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{6F14D3A5-922E-48FE-8054-DDB9EC79A839}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="demo_delphi\DelphiBasicDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo_delphi_features\DelphiVariousFeaturesDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo_delphi_HTMLSurface\DelphiHTMLSurfaceDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo_delphi_ZenGL\DelphiZenGLDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo_delphi_HTMLSurfaceZenGL\DelphiZenGLHTMLSurfaceDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo_delphi_steamscreenshots\DelphiScreenshotsDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo_delphi_gameserver\DelphiGameserverDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo_delphi_gameclient\DelphiGameclientDemo.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="DelphiBasicDemo">
+			<MSBuild Projects="demo_delphi\DelphiBasicDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiBasicDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi\DelphiBasicDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiBasicDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi\DelphiBasicDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiVariousFeaturesDemo">
+			<MSBuild Projects="demo_delphi_features\DelphiVariousFeaturesDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiVariousFeaturesDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi_features\DelphiVariousFeaturesDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiVariousFeaturesDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi_features\DelphiVariousFeaturesDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiHTMLSurfaceDemo">
+			<MSBuild Projects="demo_delphi_HTMLSurface\DelphiHTMLSurfaceDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiHTMLSurfaceDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi_HTMLSurface\DelphiHTMLSurfaceDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiHTMLSurfaceDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi_HTMLSurface\DelphiHTMLSurfaceDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiZenGLDemo">
+			<MSBuild Projects="demo_delphi_ZenGL\DelphiZenGLDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiZenGLDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi_ZenGL\DelphiZenGLDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiZenGLDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi_ZenGL\DelphiZenGLDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiZenGLHTMLSurfaceDemo">
+			<MSBuild Projects="demo_delphi_HTMLSurfaceZenGL\DelphiZenGLHTMLSurfaceDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiZenGLHTMLSurfaceDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi_HTMLSurfaceZenGL\DelphiZenGLHTMLSurfaceDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiZenGLHTMLSurfaceDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi_HTMLSurfaceZenGL\DelphiZenGLHTMLSurfaceDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiScreenshotsDemo">
+			<MSBuild Projects="demo_delphi_steamscreenshots\DelphiScreenshotsDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiScreenshotsDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi_steamscreenshots\DelphiScreenshotsDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiScreenshotsDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi_steamscreenshots\DelphiScreenshotsDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiGameserverDemo">
+			<MSBuild Projects="demo_delphi_gameserver\DelphiGameserverDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiGameserverDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi_gameserver\DelphiGameserverDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiGameserverDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi_gameserver\DelphiGameserverDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiGameclientDemo">
+			<MSBuild Projects="demo_delphi_gameclient\DelphiGameclientDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiGameclientDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo_delphi_gameclient\DelphiGameclientDemo.dproj"/>
+		</Target>
+		<Target Name="DelphiGameclientDemo:Make">
+			<MSBuild Targets="Make" Projects="demo_delphi_gameclient\DelphiGameclientDemo.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="DelphiBasicDemo;DelphiVariousFeaturesDemo;DelphiHTMLSurfaceDemo;DelphiZenGLDemo;DelphiZenGLHTMLSurfaceDemo;DelphiScreenshotsDemo;DelphiGameserverDemo;DelphiGameclientDemo"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="DelphiBasicDemo:Clean;DelphiVariousFeaturesDemo:Clean;DelphiHTMLSurfaceDemo:Clean;DelphiZenGLDemo:Clean;DelphiZenGLHTMLSurfaceDemo:Clean;DelphiScreenshotsDemo:Clean;DelphiGameserverDemo:Clean;DelphiGameclientDemo:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="DelphiBasicDemo:Make;DelphiVariousFeaturesDemo:Make;DelphiHTMLSurfaceDemo:Make;DelphiZenGLDemo:Make;DelphiZenGLHTMLSurfaceDemo:Make;DelphiScreenshotsDemo:Make;DelphiGameserverDemo:Make;DelphiGameclientDemo:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

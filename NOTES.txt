@@ -1,0 +1,9 @@
+NOTES:
+1. steam_appid.txt need to contain ID of your game. e.g. 480
+
+2. For all info and full API documentation please go to Steamworks:
+https://partner.steamgames.com/home/steamworks
+
+3. For build ASTRON3D Steam API Wrapper you need Visual Studio 2010 
+(and up) and Steamworks SDK v1.31.
+
