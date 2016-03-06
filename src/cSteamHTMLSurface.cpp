@@ -30,28 +30,38 @@ CHTMLSurface::CHTMLSurface( cHTMLSurfaceCallbacksHandler handler, const char* Us
 	m_JSAlert ( this, &CHTMLSurface::OnJSAlert ),
 	m_JSConfirm ( this, &CHTMLSurface::OnJSConfirm ),
 	m_FileOpenDialog ( this, &CHTMLSurface::OnFileOpenDialog ),
+	/*TODO
 	m_ComboNeedsPaint ( this, &CHTMLSurface::OnComboNeedsPaint ),
 	m_ShowPopup ( this, &CHTMLSurface::OnShowPopup ),
 	m_HidePopup ( this, &CHTMLSurface::OnHidePopup ),
 	m_SizePopup ( this, &CHTMLSurface::OnSizePopup ),
+	*/
 	m_NewWindow ( this, &CHTMLSurface::OnNewWindow ),
 	m_SetCursor ( this, &CHTMLSurface::OnSetCursor ),
 	m_StatusText ( this, &CHTMLSurface::OnStatusText ),
 	m_ShowToolTip ( this, &CHTMLSurface::OnShowToolTip ),
-	m_UpdateToolTip ( this, &CHTMLSurface::OnUpdateToolTip ),
+	m_UpdateToolTip ( this, &CHTMLSurface::OnUpdateToolTip )
+	
+	,
 	m_HideToolTip ( this, &CHTMLSurface::OnHideToolTip)
+	
 {
-	Handle = INVALID_HTTMLBROWSER;
+	//TODO Handle = INVALID_HTTMLBROWSER;
 	SteamAPICall_t hSteamAPICall = SteamHTMLSurface()->CreateBrowser( UserAgent, UserCSS );
 	m_SteamCallResultBrowserReady.Set( hSteamAPICall, this, &CHTMLSurface::OnBrowserReady );
 	cb=handler;
 }
 
+;
+
 //---------------------------------------------------------------------------------------------------- CALLBACKS
+//.
+//*TODO
 void CHTMLSurface::OnCloseBrowser( HTML_CloseBrowser_t *pParam  )
 {
 	if (cb.OnCloseBrowser!=nullptr){ cb.OnCloseBrowser(); };
 }
+
 void CHTMLSurface::OnNeedsPaint( HTML_NeedsPaint_t *pParam  )
 {
 	if (cb.OnNeedsPaint!=nullptr){ cb.OnNeedsPaint(pParam->pBGRA, pParam->unWide,pParam->unTall,pParam->unUpdateX,pParam->unUpdateY,pParam->unUpdateWide, pParam->unUpdateTall, pParam->unScrollX, pParam->unScrollY, pParam->flPageScale, pParam->unPageSerial); };
@@ -108,6 +118,7 @@ void CHTMLSurface::OnFileOpenDialog(HTML_FileOpenDialog_t *pParam)
 {
 	if (cb.OnFileOpenDialog!=nullptr){ cb.OnFileOpenDialog(pParam->pchTitle,pParam->pchInitialFile ); };
 }
+/*TODO
 void CHTMLSurface::OnComboNeedsPaint(HTML_ComboNeedsPaint_t *pParam)
 {
 	if (cb.OnComboNeedsPaint!=nullptr){ cb.OnComboNeedsPaint(pParam->pBGRA,pParam->unWide,pParam->unTall ); };
@@ -124,6 +135,7 @@ void CHTMLSurface::OnSizePopup(HTML_SizePopup_t *pParam)
 {
 	if (cb.OnSizePopup!=nullptr){ cb.OnSizePopup(pParam->unX, pParam->unY, pParam->unWide, pParam->unTall); };
 }
+*/
 void CHTMLSurface::OnNewWindow(HTML_NewWindow_t *pParam)
 {
 	if (cb.OnNewWindow!=nullptr){ cb.OnNewWindow(pParam->pchURL, pParam->unX, pParam->unY, pParam->unWide, pParam->unTall); };

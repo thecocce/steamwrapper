@@ -42,7 +42,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\src;..\..\sdk\public\steam;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\src;..\..\sdk\public\steam;..\..\openvr\headers;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\sdk\redistributable_bin;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\release\</OutDir>
   </PropertyGroup>

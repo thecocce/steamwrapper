@@ -75,5 +75,7 @@ uint32 SteamUGC_GetSubscribedItems( PublishedFileId_t* PublishedFileID, uint32 M
 // Get info about the item on disk.  If you are supporting items published through the legacy RemoteStorage APIs then *LegacyItem will be set to true
 // and Folder will contain the full path to the file rather than the containing folder.
 // returns true if item is installed
+/*TODO
 bool SteamUGC_GetItemInstallInfo( PublishedFileId_t PublishedFileID, uint64 *SizeOnDisk, char *Folder, uint32 FolderSize, bool *LegacyItem ){return SteamUGC()->GetItemInstallInfo(PublishedFileID,SizeOnDisk,Folder,FolderSize,LegacyItem);}; 
 bool SteamUGC_GetItemUpdateInfo( PublishedFileId_t PublishedFileID, bool *NeedsUpdate, bool *IsDownloading, uint64 *BytesDownloaded, uint64 *BytesTotal ){return SteamUGC()->GetItemUpdateInfo(PublishedFileID,NeedsUpdate,IsDownloading,BytesDownloaded,BytesTotal);};
+*/

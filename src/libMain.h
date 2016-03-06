@@ -9,7 +9,7 @@
 #include "isteamgameserver.h"
 #include "steam_gameserver.h"
 #include "isteamgameserverstats.h"
-#include "steamvr.h"
+#include "openvr.h"
 #include <vector>
 
 ///////////////////////////////////////////////////////////////////// CALLBACKS DEF
@@ -591,10 +591,14 @@ private:
 	STEAM_CALLBACK( CHTMLSurface, OnJSAlert, HTML_JSAlert_t, m_JSAlert );
 	STEAM_CALLBACK( CHTMLSurface, OnJSConfirm, HTML_JSConfirm_t, m_JSConfirm );
 	STEAM_CALLBACK( CHTMLSurface, OnFileOpenDialog, HTML_FileOpenDialog_t, m_FileOpenDialog );
+	
+	/*TODO
 	STEAM_CALLBACK( CHTMLSurface, OnComboNeedsPaint, HTML_ComboNeedsPaint_t, m_ComboNeedsPaint );
 	STEAM_CALLBACK( CHTMLSurface, OnShowPopup, HTML_ShowPopup_t, m_ShowPopup );
 	STEAM_CALLBACK( CHTMLSurface, OnHidePopup, HTML_HidePopup_t, m_HidePopup );
 	STEAM_CALLBACK( CHTMLSurface, OnSizePopup, HTML_SizePopup_t, m_SizePopup );
+	*/
+
 	STEAM_CALLBACK( CHTMLSurface, OnNewWindow, HTML_NewWindow_t, m_NewWindow );
 	STEAM_CALLBACK( CHTMLSurface, OnSetCursor, HTML_SetCursor_t, m_SetCursor );
 	STEAM_CALLBACK( CHTMLSurface, OnStatusText, HTML_StatusText_t, m_StatusText );
