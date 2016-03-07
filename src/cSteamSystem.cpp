@@ -6,13 +6,16 @@
 //----------------------------------------------------
 #include "libMain.h"
 
-
+Log *pLog = new Log("debug.log");
 
 // init and start wrapper
 bool System_InitWrapper()
 {
- return SteamAPI_Init();
+	//pLog = new Log("debug.log");
+	LogToFile("System_InitWrapper");
+	return SteamAPI_Init();
 };
+
 // shutdown wrapper
 void System_ShutdownWrapper(){SteamAPI_Shutdown();};
 // checks if a local Steam client is running 
@@ -37,3 +40,7 @@ void System_SetMiniDumpComment(const char *Msg){SteamAPI_SetMiniDumpComment(Msg)
 // between receiving events or results from the Steam API. Most games call this once per render-frame. 
 // All registered listener functions will be invoked during this call, in the callers thread context.
 void System_RunCallbacks(){SteamAPI_RunCallbacks();};
+
+void LogToFile(char* str){
+	pLog->Write(str);
+}

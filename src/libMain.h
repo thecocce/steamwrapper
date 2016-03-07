@@ -11,6 +11,7 @@
 #include "isteamgameserverstats.h"
 #include "steamvr.h"
 #include <vector>
+#include "Log.h"
 
 ///////////////////////////////////////////////////////////////////// CALLBACKS DEF
 // server

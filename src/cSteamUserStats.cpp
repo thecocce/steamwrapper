@@ -86,7 +86,10 @@ SteamAPICall_t SteamUserStats_FindOrCreateLeaderboard( const char *LeaderboardNa
 
 // as above, but won't create the leaderboard if it's not found
 // This call is asynchronous, with the result returned in LeaderboardFindResult_t
-SteamAPICall_t SteamUserStats_FindLeaderboard( const char *LeaderboardName ){return SteamUserStats()->FindLeaderboard(LeaderboardName);};
+SteamAPICall_t SteamUserStats_FindLeaderboard( const char *LeaderboardName ){
+	LogToFile("SteamUserStats_FindLeaderboard");
+	return SteamUserStats()->FindLeaderboard(LeaderboardName);
+};
 
 // returns the name of a leaderboard
 const char *SteamUserStats_GetLeaderboardName( SteamLeaderboard_t SteamLeaderboard ){return SteamUserStats()->GetLeaderboardName(SteamLeaderboard);};

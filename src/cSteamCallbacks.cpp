@@ -4,11 +4,12 @@
 // License: MIT
 // Site: https://github.com/voliaandrey/steamwrapper
 //----------------------------------------------------
+
 #include "libMain.h"
 
 cSteamCallbacksHandler *CallbacksHandler;
 
-void System_RegisterCallbacks(cSteamCallbacks callbacks){if (CallbacksHandler==nullptr){CallbacksHandler = new cSteamCallbacksHandler(callbacks);}; }; 
+void System_RegisterCallbacks(cSteamCallbacks callbacks){LogToFile("System_RegisterCallbacks");if (CallbacksHandler==nullptr){CallbacksHandler = new cSteamCallbacksHandler(callbacks);}; }; 
 
 cSteamCallbacksHandler::cSteamCallbacksHandler(cSteamCallbacks callbacks):
 // server
@@ -609,7 +610,8 @@ void cSteamCallbacksHandler::OnUserAchievementStored(UserAchievementStored_t *pP
 	if (cb.OnUserAchievementStored!=nullptr){ cb.OnUserAchievementStored(pParam->m_nGameID,pParam->m_bGroupAchievement,pParam->m_rgchAchievementName,pParam->m_nCurProgress,pParam->m_nMaxProgress); };
 }
 void cSteamCallbacksHandler::OnLeaderboardFindResult(LeaderboardFindResult_t *pParam)
-{
+{	
+	LogToFile("OnLeaderboardFindResult");
 	if (cb.OnLeaderboardFindResult!=nullptr){ cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard,pParam->m_bLeaderboardFound); };
 }
 void cSteamCallbacksHandler::OnLeaderboardScoresDownloaded(LeaderboardScoresDownloaded_t *pParam)
