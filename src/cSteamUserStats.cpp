@@ -6,6 +6,8 @@
 //----------------------------------------------------
 #include "libMain.h"
 
+extern cSteamCallbacksHandler *CallbacksHandler;
+
 // Ask the server to send down this user's data and achievements for this game
 bool SteamUserStats_RequestCurrentStats(){return SteamUserStats()->RequestCurrentStats();};
 
@@ -82,13 +84,22 @@ bool SteamUserStats_ResetAllStats( bool AchievementsToo ){return SteamUserStats(
 
 // asks the Steam back-end for a leaderboard by name, and will create it if it's not yet
 // This call is asynchronous, with the result returned in LeaderboardFindResult_t
-SteamAPICall_t SteamUserStats_FindOrCreateLeaderboard( const char *LeaderboardName, ELeaderboardSortMethod LeaderboardSortMethod, ELeaderboardDisplayType LeaderboardDisplayType ){return SteamUserStats()->FindOrCreateLeaderboard(LeaderboardName,LeaderboardSortMethod,LeaderboardDisplayType);};
+SteamAPICall_t SteamUserStats_FindOrCreateLeaderboard( const char *LeaderboardName, ELeaderboardSortMethod LeaderboardSortMethod, ELeaderboardDisplayType LeaderboardDisplayType ){
+		LogToFile("SteamUserStats_FindOrCreateLeaderboard");
+		SteamAPICall_t hSteamAPICall = SteamUserStats()->FindOrCreateLeaderboard(LeaderboardName,LeaderboardSortMethod,LeaderboardDisplayType);
+		if (CallbacksHandler != nullptr)
+			CallbacksHandler->m_SteamCallResultCreateLeaderboard.Set( hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnFindLeaderboard );
+		return hSteamAPICall;
+};
 
 // as above, but won't create the leaderboard if it's not found
 // This call is asynchronous, with the result returned in LeaderboardFindResult_t
 SteamAPICall_t SteamUserStats_FindLeaderboard( const char *LeaderboardName ){
 	LogToFile("SteamUserStats_FindLeaderboard");
-	return SteamUserStats()->FindLeaderboard(LeaderboardName);
+	SteamAPICall_t hSteamAPICall =  SteamUserStats()->FindLeaderboard(LeaderboardName);
+	if (CallbacksHandler != nullptr)
+			CallbacksHandler->m_SteamCallResultCreateLeaderboard.Set( hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnFindLeaderboard );
+		return hSteamAPICall;
 };
 
 // returns the name of a leaderboard

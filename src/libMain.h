@@ -365,7 +365,7 @@ struct cSteamCallbacks
 
 class cSteamCallbacksHandler 
 {
-private:
+public:
 	cSteamCallbacks cb;	
 
 	// friends
@@ -437,7 +437,7 @@ private:
 // userstats
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserStatsReceived, UserStatsReceived_t, m_UserStatsReceived );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserStatsStored, UserStatsStored_t, m_UserStatsStored );
-	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserAchievementStored, UserAchievementStored_t, m_UserAchievementStored );
+	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserAchievementStored, UserAchievementStored_t, m_UserAchievementStored );	
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnLeaderboardFindResult, LeaderboardFindResult_t, m_LeaderboardFindResult );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnLeaderboardScoresDownloaded, LeaderboardScoresDownloaded_t, m_LeaderboardScoresDownloaded );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnLeaderboardScoreUploaded, LeaderboardScoreUploaded_t, m_LeaderboardScoreUploaded );
@@ -532,6 +532,9 @@ private:
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnMusicPlayerWantsVolume, MusicPlayerWantsVolume_t, m_MusicPlayerWantsVolume );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnMusicPlayerSelectsQueueEntry, MusicPlayerSelectsQueueEntry_t, m_MusicPlayerSelectsQueueEntry );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnMusicPlayerSelectsPlaylistEntry, MusicPlayerSelectsPlaylistEntry_t, m_MusicPlayerSelectsPlaylistEntry );
+	
+	void OnFindLeaderboard( LeaderboardFindResult_t *pResult, bool bIOFailure);
+	CCallResult< cSteamCallbacksHandler, LeaderboardFindResult_t> m_SteamCallResultCreateLeaderboard;
 public:
     cSteamCallbacksHandler(cSteamCallbacks callbacks);
 };
@@ -626,3 +629,4 @@ public:
 	void ServerFailedToRespond( HServerListRequest hReq, int iServer );
 	void RefreshComplete( HServerListRequest hReq, EMatchMakingServerResponse response );
 };
+

@@ -4,7 +4,6 @@
 // License: MIT
 // Site: https://github.com/voliaandrey/steamwrapper
 //----------------------------------------------------
-
 #include "libMain.h"
 
 cSteamCallbacksHandler *CallbacksHandler;
@@ -12,8 +11,8 @@ cSteamCallbacksHandler *CallbacksHandler;
 void System_RegisterCallbacks(cSteamCallbacks callbacks){LogToFile("System_RegisterCallbacks");if (CallbacksHandler==nullptr){CallbacksHandler = new cSteamCallbacksHandler(callbacks);}; }; 
 
 cSteamCallbacksHandler::cSteamCallbacksHandler(cSteamCallbacks callbacks):
-// server
-m_GSClientApprove( this, &cSteamCallbacksHandler::OnGSClientApprove ),
+    // server
+    m_GSClientApprove( this, &cSteamCallbacksHandler::OnGSClientApprove ),
 	m_GSClientDeny( this, &cSteamCallbacksHandler::OnGSClientDeny ),
 	m_GSClientKick( this, &cSteamCallbacksHandler::OnGSClientKick ),
 	m_GSClientAchievementStatus( this, &cSteamCallbacksHandler::OnGSClientAchievementStatus ),
@@ -177,6 +176,16 @@ m_GSClientApprove( this, &cSteamCallbacksHandler::OnGSClientApprove ),
 	m_SetPersonaNameResponse( this, &cSteamCallbacksHandler::OnSetPersonaNameResponse )
 {
 	cb = callbacks;
+}
+
+void cSteamCallbacksHandler::OnFindLeaderboard( LeaderboardFindResult_t *pParam, bool bIOFailure)
+{
+	LogToFile("OnFindLeaderboard->1");
+	if (cb.OnLeaderboardFindResult!=nullptr){
+		LogToFile("OnFindLeaderboard->00000000000000000");
+		cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard,pParam->m_bLeaderboardFound); 
+	};
+	LogToFile("OnFindLeaderboard->2");
 }
 
 // friends 
@@ -609,11 +618,13 @@ void cSteamCallbacksHandler::OnUserAchievementStored(UserAchievementStored_t *pP
 {
 	if (cb.OnUserAchievementStored!=nullptr){ cb.OnUserAchievementStored(pParam->m_nGameID,pParam->m_bGroupAchievement,pParam->m_rgchAchievementName,pParam->m_nCurProgress,pParam->m_nMaxProgress); };
 }
+
 void cSteamCallbacksHandler::OnLeaderboardFindResult(LeaderboardFindResult_t *pParam)
 {	
 	LogToFile("OnLeaderboardFindResult");
 	if (cb.OnLeaderboardFindResult!=nullptr){ cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard,pParam->m_bLeaderboardFound); };
 }
+
 void cSteamCallbacksHandler::OnLeaderboardScoresDownloaded(LeaderboardScoresDownloaded_t *pParam)
 {
 	if (cb.OnLeaderboardScoresDownloaded!=nullptr){ cb.OnLeaderboardScoresDownloaded(pParam->m_hSteamLeaderboard,pParam->m_hSteamLeaderboardEntries,pParam->m_cEntryCount); };
