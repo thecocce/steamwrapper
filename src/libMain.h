@@ -1,10 +1,12 @@
 //----------------------------------------------------
 // © 2015 Andrey Volia
-// 
+// @ 2016 Francesco Balzani - thecocce
+//
 // License: MIT
-// Site: https://github.com/voliaandrey/steamwrapper
+// Site: https://github.com/thecocce/steamwrapper
 //----------------------------------------------------
 #pragma warning (disable: 4996 4800)
+
 #include "steam_api.h"
 #include "isteamgameserver.h"
 #include "steam_gameserver.h"
@@ -540,11 +542,9 @@ public:
 	void OnUploadedLeaderboard(LeaderboardScoreUploaded_t *pResult, bool bIOFailure);
 	CCallResult< cSteamCallbacksHandler, LeaderboardScoreUploaded_t> m_SteamCallResultLeaderboardScoreUploaded;
 
-
 	STEAM_CALLBACK(cSteamCallbacksHandler, OnLeaderboardScoresDownloaded, LeaderboardScoresDownloaded_t, m_LeaderboardScoresDownloaded);
 	void OnDownloadedLeaderboard(LeaderboardScoresDownloaded_t *pResult, bool bIOFailure);
 	CCallResult< cSteamCallbacksHandler, LeaderboardScoresDownloaded_t> m_SteamCallResultLeaderboardScoresDownloaded;
-
 	
 public:
     cSteamCallbacksHandler(cSteamCallbacks callbacks);

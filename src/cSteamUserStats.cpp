@@ -1,8 +1,9 @@
 //----------------------------------------------------
 // © 2015 Andrey Volia
+// @ 2016 Francesco Balzani - thecocce
 // 
 // License: MIT
-// Site: https://github.com/voliaandrey/steamwrapper
+// Site: https://github.com/thecocce/steamwrapper
 //----------------------------------------------------
 #include "libMain.h"
 
