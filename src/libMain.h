@@ -438,9 +438,6 @@ public:
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserStatsReceived, UserStatsReceived_t, m_UserStatsReceived );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserStatsStored, UserStatsStored_t, m_UserStatsStored );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserAchievementStored, UserAchievementStored_t, m_UserAchievementStored );	
-	STEAM_CALLBACK( cSteamCallbacksHandler, OnLeaderboardFindResult, LeaderboardFindResult_t, m_LeaderboardFindResult );
-	STEAM_CALLBACK( cSteamCallbacksHandler, OnLeaderboardScoresDownloaded, LeaderboardScoresDownloaded_t, m_LeaderboardScoresDownloaded );
-	STEAM_CALLBACK( cSteamCallbacksHandler, OnLeaderboardScoreUploaded, LeaderboardScoreUploaded_t, m_LeaderboardScoreUploaded );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnNumberOfCurrentPlayers, NumberOfCurrentPlayers_t, m_NumberOfCurrentPlayers );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserStatsUnloaded, UserStatsUnloaded_t, m_UserStatsUnloaded );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnUserAchievementIconFetched, UserAchievementIconFetched_t, m_UserAchievementIconFetched );
@@ -533,8 +530,22 @@ public:
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnMusicPlayerSelectsQueueEntry, MusicPlayerSelectsQueueEntry_t, m_MusicPlayerSelectsQueueEntry );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnMusicPlayerSelectsPlaylistEntry, MusicPlayerSelectsPlaylistEntry_t, m_MusicPlayerSelectsPlaylistEntry );
 	
-	void OnFindLeaderboard( LeaderboardFindResult_t *pResult, bool bIOFailure);
+
+
+	STEAM_CALLBACK(cSteamCallbacksHandler, OnLeaderboardFindResult, LeaderboardFindResult_t, m_LeaderboardFindResult);
+	void OnFindLeaderboard(LeaderboardFindResult_t *pResult, bool bIOFailure);
 	CCallResult< cSteamCallbacksHandler, LeaderboardFindResult_t> m_SteamCallResultCreateLeaderboard;
+
+	STEAM_CALLBACK(cSteamCallbacksHandler, OnLeaderboardScoreUploaded, LeaderboardScoreUploaded_t, m_LeaderboardScoreUploaded);
+	void OnUploadedLeaderboard(LeaderboardScoreUploaded_t *pResult, bool bIOFailure);
+	CCallResult< cSteamCallbacksHandler, LeaderboardScoreUploaded_t> m_SteamCallResultLeaderboardScoreUploaded;
+
+
+	STEAM_CALLBACK(cSteamCallbacksHandler, OnLeaderboardScoresDownloaded, LeaderboardScoresDownloaded_t, m_LeaderboardScoresDownloaded);
+	void OnDownloadedLeaderboard(LeaderboardScoresDownloaded_t *pResult, bool bIOFailure);
+	CCallResult< cSteamCallbacksHandler, LeaderboardScoresDownloaded_t> m_SteamCallResultLeaderboardScoresDownloaded;
+
+	
 public:
     cSteamCallbacksHandler(cSteamCallbacks callbacks);
 };

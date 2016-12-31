@@ -178,14 +178,32 @@ cSteamCallbacksHandler::cSteamCallbacksHandler(cSteamCallbacks callbacks):
 	cb = callbacks;
 }
 
-void cSteamCallbacksHandler::OnFindLeaderboard( LeaderboardFindResult_t *pParam, bool bIOFailure)
+void cSteamCallbacksHandler::OnFindLeaderboard(LeaderboardFindResult_t *pParam, bool bIOFailure)
 {
 	LogToFile("OnFindLeaderboard->1");
-	if (cb.OnLeaderboardFindResult!=nullptr){
-		LogToFile("OnFindLeaderboard->00000000000000000");
-		cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard,pParam->m_bLeaderboardFound); 
+	if (cb.OnLeaderboardFindResult != nullptr) {
+		cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard, pParam->m_bLeaderboardFound);
 	};
 	LogToFile("OnFindLeaderboard->2");
+}
+
+void cSteamCallbacksHandler::OnUploadedLeaderboard(LeaderboardScoreUploaded_t *pParam, bool bIOFailure)
+{
+	LogToFile("OnUploadedLeaderboard->1");
+	if (cb.OnLeaderboardScoreUploaded != nullptr) {
+		cb.OnLeaderboardScoreUploaded(pParam->m_bSuccess, pParam->m_hSteamLeaderboard,pParam->m_nScore,
+			pParam->m_bScoreChanged, pParam->m_nGlobalRankNew, pParam->m_nGlobalRankPrevious);
+	};
+	LogToFile("OnUploadedLeaderboard->2");
+}
+
+void cSteamCallbacksHandler::OnDownloadedLeaderboard(LeaderboardScoresDownloaded_t *pParam, bool bIOFailure)
+{
+	LogToFile("OnUploadedLeaderboard->1");
+	if (cb.OnLeaderboardScoresDownloaded != nullptr) {
+		cb.OnLeaderboardScoresDownloaded(pParam->m_hSteamLeaderboard, pParam->m_hSteamLeaderboardEntries, pParam->m_cEntryCount);
+	};
+	LogToFile("OnUploadedLeaderboard->2");
 }
 
 // friends 
@@ -622,16 +640,25 @@ void cSteamCallbacksHandler::OnUserAchievementStored(UserAchievementStored_t *pP
 void cSteamCallbacksHandler::OnLeaderboardFindResult(LeaderboardFindResult_t *pParam)
 {	
 	LogToFile("OnLeaderboardFindResult");
-	if (cb.OnLeaderboardFindResult!=nullptr){ cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard,pParam->m_bLeaderboardFound); };
+	if (cb.OnLeaderboardFindResult!=nullptr){ 
+		cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard,pParam->m_bLeaderboardFound); 
+	};
 }
 
 void cSteamCallbacksHandler::OnLeaderboardScoresDownloaded(LeaderboardScoresDownloaded_t *pParam)
 {
-	if (cb.OnLeaderboardScoresDownloaded!=nullptr){ cb.OnLeaderboardScoresDownloaded(pParam->m_hSteamLeaderboard,pParam->m_hSteamLeaderboardEntries,pParam->m_cEntryCount); };
+	LogToFile("OnLeaderboardScoresDownloaded");
+	if (cb.OnLeaderboardScoresDownloaded!=nullptr){ 
+		cb.OnLeaderboardScoresDownloaded(pParam->m_hSteamLeaderboard,pParam->m_hSteamLeaderboardEntries,pParam->m_cEntryCount); 
+	};
 }
+
 void cSteamCallbacksHandler::OnLeaderboardScoreUploaded(LeaderboardScoreUploaded_t *pParam)
 {
-	if (cb.OnLeaderboardScoreUploaded!=nullptr){ cb.OnLeaderboardScoreUploaded(pParam->m_bSuccess,pParam->m_hSteamLeaderboard,pParam->m_nScore,pParam->m_bScoreChanged,pParam->m_nGlobalRankNew,pParam->m_nGlobalRankPrevious); };
+	LogToFile("OnLeaderboardScoreUploaded");
+	if (cb.OnLeaderboardScoreUploaded!=nullptr){ 
+		cb.OnLeaderboardScoreUploaded(pParam->m_bSuccess,pParam->m_hSteamLeaderboard,pParam->m_nScore,pParam->m_bScoreChanged,pParam->m_nGlobalRankNew,pParam->m_nGlobalRankPrevious); 
+	};
 }
 void cSteamCallbacksHandler::OnNumberOfCurrentPlayers(NumberOfCurrentPlayers_t *pParam)
 {

@@ -80,28 +80,6 @@ bool SteamUserStats_GetUserAchievementAndUnlockTime( CSteamID steamIDUser, const
 // Reset stats 
 bool SteamUserStats_ResetAllStats( bool AchievementsToo ){return SteamUserStats()->ResetAllStats(AchievementsToo);};
 
-// Leaderboard functions
-
-// asks the Steam back-end for a leaderboard by name, and will create it if it's not yet
-// This call is asynchronous, with the result returned in LeaderboardFindResult_t
-SteamAPICall_t SteamUserStats_FindOrCreateLeaderboard( const char *LeaderboardName, ELeaderboardSortMethod LeaderboardSortMethod, ELeaderboardDisplayType LeaderboardDisplayType ){
-		LogToFile("SteamUserStats_FindOrCreateLeaderboard");
-		SteamAPICall_t hSteamAPICall = SteamUserStats()->FindOrCreateLeaderboard(LeaderboardName,LeaderboardSortMethod,LeaderboardDisplayType);
-		if (CallbacksHandler != nullptr)
-			CallbacksHandler->m_SteamCallResultCreateLeaderboard.Set( hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnFindLeaderboard );
-		return hSteamAPICall;
-};
-
-// as above, but won't create the leaderboard if it's not found
-// This call is asynchronous, with the result returned in LeaderboardFindResult_t
-SteamAPICall_t SteamUserStats_FindLeaderboard( const char *LeaderboardName ){
-	LogToFile("SteamUserStats_FindLeaderboard");
-	SteamAPICall_t hSteamAPICall =  SteamUserStats()->FindLeaderboard(LeaderboardName);
-	if (CallbacksHandler != nullptr)
-			CallbacksHandler->m_SteamCallResultCreateLeaderboard.Set( hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnFindLeaderboard );
-		return hSteamAPICall;
-};
-
 // returns the name of a leaderboard
 const char *SteamUserStats_GetLeaderboardName( SteamLeaderboard_t SteamLeaderboard ){return SteamUserStats()->GetLeaderboardName(SteamLeaderboard);};
 
@@ -114,29 +92,10 @@ ELeaderboardSortMethod SteamUserStats_GetLeaderboardSortMethod( SteamLeaderboard
 // returns the display type of the leaderboard
 ELeaderboardDisplayType SteamUserStats_GetLeaderboardDisplayType( SteamLeaderboard_t SteamLeaderboard ){return SteamUserStats()->GetLeaderboardDisplayType(SteamLeaderboard);};
 
-// Asks the Steam back-end for a set of rows in the leaderboard.
-// This call is asynchronous, with the result returned in LeaderboardScoresDownloaded_t
-// LeaderboardScoresDownloaded_t will contain a handle to pull the results from GetDownloadedLeaderboardEntries() (below)
-// You can ask for more entries than exist, and it will return as many as do exist.
-// k_ELeaderboardDataRequestGlobal requests rows in the leaderboard from the full table, with nRangeStart & nRangeEnd in the range [1, TotalEntries]
-// k_ELeaderboardDataRequestGlobalAroundUser requests rows around the current user, RangeStart being negate
-//   e.g. DownloadLeaderboardEntries( hLeaderboard, k_ELeaderboardDataRequestGlobalAroundUser, -3, 3 ) will return 7 rows, 3 before the user, 3 after
-// k_ELeaderboardDataRequestFriends requests all the rows for friends of the current user 
-SteamAPICall_t SteamUserStats_DownloadLeaderboardEntries( SteamLeaderboard_t SteamLeaderboard, ELeaderboardDataRequest LeaderboardDataRequest, int RangeStart, int RangeEnd ){return SteamUserStats()->DownloadLeaderboardEntries(SteamLeaderboard, LeaderboardDataRequest, RangeStart, RangeEnd );};
-// as above, but downloads leaderboard entries for an arbitrary set of users - ELeaderboardDataRequest is k_ELeaderboardDataRequestUsers
-// if a user doesn't have a leaderboard entry, they won't be included in the result
-// a max of 100 users can be downloaded at a time, with only one outstanding call at a time
-SteamAPICall_t SteamUserStats_DownloadLeaderboardEntriesForUsers( SteamLeaderboard_t SteamLeaderboard, CSteamID *Users, int cUsers ){return SteamUserStats()->DownloadLeaderboardEntriesForUsers(SteamLeaderboard,Users,cUsers);};
 
 // Returns data about a single leaderboard entry
 // use a for loop from 0 to LeaderboardScoresDownloaded_t-EntryCount to get all the downloaded entries
 bool SteamUserStats_GetDownloadedLeaderboardEntry( SteamLeaderboardEntries_t SteamLeaderboardEntries, int index, LeaderboardEntry_t *LeaderboardEntry, int32 *Details, int DetailsMax ){return SteamUserStats()->GetDownloadedLeaderboardEntry(SteamLeaderboardEntries, index, LeaderboardEntry, Details, DetailsMax);};
-
-// Uploads a user score to the Steam back-end.
-// This call is asynchronous, with the result returned in LeaderboardScoreUploaded
-// Details are extra game-defined information regarding how the user got that score
-// pScoreDetails points to an array of int32's, cScoreDetailsCount is the number of int32's in the list
-SteamAPICall_t SteamUserStats_UploadLeaderboardScore( SteamLeaderboard_t SteamLeaderboard, ELeaderboardUploadScoreMethod LeaderboardUploadScoreMethod, int32 Score, const int32 *ScoreDetails, int ScoreDetailsCount ){return SteamUserStats()->UploadLeaderboardScore(SteamLeaderboard, LeaderboardUploadScoreMethod, Score, ScoreDetails, ScoreDetailsCount);};
 
 // Attaches a piece of user generated content the user's entry on a leaderboard.
 // hContent is a handle to a piece of user generated content that was shared using ISteamUserRemoteStorage::FileShare().
@@ -181,3 +140,61 @@ bool SteamUserStats_GetGlobalStatDouble( const char *StatName, double *Data ){re
 // elements actually set.
 int32 SteamUserStats_GetGlobalStatHistoryInt64( const char *StatName, int64 *Data, uint32 cData ){return SteamUserStats()->GetGlobalStatHistory(StatName,Data,cData);};
 int32 SteamUserStats_GetGlobalStatHistoryDouble( const char *StatName, double *Data, uint32 cData ){return SteamUserStats()->GetGlobalStatHistory(StatName,Data,cData);};
+
+
+
+// Leaderboard functions
+// asks the Steam back-end for a leaderboard by name, and will create it if it's not yet
+// This call is asynchronous, with the result returned in LeaderboardFindResult_t
+SteamAPICall_t SteamUserStats_FindOrCreateLeaderboard(const char *LeaderboardName, ELeaderboardSortMethod LeaderboardSortMethod, ELeaderboardDisplayType LeaderboardDisplayType) {
+	LogToFile("SteamUserStats_FindOrCreateLeaderboard");
+	SteamAPICall_t hSteamAPICall = SteamUserStats()->FindOrCreateLeaderboard(LeaderboardName, LeaderboardSortMethod, LeaderboardDisplayType);
+	if (CallbacksHandler != nullptr)
+		CallbacksHandler->m_SteamCallResultCreateLeaderboard.Set(hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnFindLeaderboard);
+	return hSteamAPICall;
+};
+
+// as above, but won't create the leaderboard if it's not found
+// This call is asynchronous, with the result returned in LeaderboardFindResult_t
+SteamAPICall_t SteamUserStats_FindLeaderboard(const char *LeaderboardName) {
+	LogToFile("SteamUserStats_FindLeaderboard");
+	SteamAPICall_t hSteamAPICall = SteamUserStats()->FindLeaderboard(LeaderboardName);
+	if (CallbacksHandler != nullptr)
+		CallbacksHandler->m_SteamCallResultCreateLeaderboard.Set(hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnFindLeaderboard);
+	return hSteamAPICall;
+};
+
+// Uploads a user score to the Steam back-end.
+// This call is asynchronous, with the result returned in LeaderboardScoreUploaded
+// Details are extra game-defined information regarding how the user got that score
+// pScoreDetails points to an array of int32's, cScoreDetailsCount is the number of int32's in the list
+SteamAPICall_t SteamUserStats_UploadLeaderboardScore(SteamLeaderboard_t SteamLeaderboard, ELeaderboardUploadScoreMethod LeaderboardUploadScoreMethod, int32 Score, const int32 *ScoreDetails, int ScoreDetailsCount) {
+	LogToFile("SteamUserStats_UploadLeaderboardScore");
+	SteamAPICall_t hSteamAPICall = SteamUserStats()->UploadLeaderboardScore(SteamLeaderboard, LeaderboardUploadScoreMethod, Score, ScoreDetails, ScoreDetailsCount);
+	if (CallbacksHandler != nullptr)
+		CallbacksHandler->m_SteamCallResultLeaderboardScoreUploaded.Set(hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnUploadedLeaderboard);
+	return hSteamAPICall;
+};
+
+// Asks the Steam back-end for a set of rows in the leaderboard.
+// This call is asynchronous, with the result returned in LeaderboardScoresDownloaded_t
+// LeaderboardScoresDownloaded_t will contain a handle to pull the results from GetDownloadedLeaderboardEntries() (below)
+// You can ask for more entries than exist, and it will return as many as do exist.
+// k_ELeaderboardDataRequestGlobal requests rows in the leaderboard from the full table, with nRangeStart & nRangeEnd in the range [1, TotalEntries]
+// k_ELeaderboardDataRequestGlobalAroundUser requests rows around the current user, RangeStart being negate
+//   e.g. DownloadLeaderboardEntries( hLeaderboard, k_ELeaderboardDataRequestGlobalAroundUser, -3, 3 ) will return 7 rows, 3 before the user, 3 after
+// k_ELeaderboardDataRequestFriends requests all the rows for friends of the current user 
+SteamAPICall_t SteamUserStats_DownloadLeaderboardEntries(SteamLeaderboard_t SteamLeaderboard, ELeaderboardDataRequest LeaderboardDataRequest, int RangeStart, int RangeEnd) { 
+	LogToFile("SteamUserStats_DownloadLeaderboardEntries");
+	SteamAPICall_t hSteamAPICall = SteamUserStats()->DownloadLeaderboardEntries(SteamLeaderboard, LeaderboardDataRequest, RangeStart, RangeEnd);
+	if (CallbacksHandler != nullptr)
+		CallbacksHandler->m_SteamCallResultLeaderboardScoresDownloaded.Set(hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnDownloadedLeaderboard);
+	return hSteamAPICall;
+};
+
+// as above, but downloads leaderboard entries for an arbitrary set of users - ELeaderboardDataRequest is k_ELeaderboardDataRequestUsers
+// if a user doesn't have a leaderboard entry, they won't be included in the result
+// a max of 100 users can be downloaded at a time, with only one outstanding call at a time
+SteamAPICall_t SteamUserStats_DownloadLeaderboardEntriesForUsers(SteamLeaderboard_t SteamLeaderboard, CSteamID *Users, int cUsers) { 
+	return SteamUserStats()->DownloadLeaderboardEntriesForUsers(SteamLeaderboard, Users, cUsers); 
+};
