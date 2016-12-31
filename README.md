@@ -9,6 +9,7 @@ Supported languages: C/C++, Delphi/Lazarus
 
 
 Fixed callbacks:
+
 14/03/2016
 * FindOrCreateLeaderboard
 
