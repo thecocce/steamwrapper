@@ -19,7 +19,7 @@ Fixed callbacks:
 
 
 
-Games use this wrapper:
+Games using this wrapper:
 * [Tragedy of Prince Rupert](http://store.steampowered.com/app/611850/Tragedy_of_Prince_Rupert/)
 * [Legie](http://store.steampowered.com/app/426050/Legie)
 
