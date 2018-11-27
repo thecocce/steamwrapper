@@ -1,6 +1,6 @@
 //----------------------------------------------------
 // © 2015 Andrey Volia
-// @ 2016 Francesco Balzani - thecocce
+// @ 2016-2018 Francesco Balzani - thecocce
 //
 // License: MIT
 // Site: https://github.com/thecocce/steamwrapper
@@ -506,9 +506,6 @@ public:
 // unified messages
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnSteamUnifiedMessagesSendMethodResult, SteamUnifiedMessagesSendMethodResult_t, m_SteamUnifiedMessagesSendMethodResult );
 // UGC
-	STEAM_CALLBACK( cSteamCallbacksHandler, OnSteamUGCQueryCompleted, SteamUGCQueryCompleted_t, m_SteamUGCQueryCompleted );
-	STEAM_CALLBACK( cSteamCallbacksHandler, OnSteamUGCRequestUGCDetailsResult, SteamUGCRequestUGCDetailsResult_t, m_SteamUGCRequestUGCDetailsResult );
-	STEAM_CALLBACK( cSteamCallbacksHandler, OnCreateItemResult, CreateItemResult_t, m_CreateItemResult );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnSubmitItemUpdateResult, SubmitItemUpdateResult_t, m_SubmitItemUpdateResult );
 	STEAM_CALLBACK( cSteamCallbacksHandler, OnItemInstalled, ItemInstalled_t, m_ItemInstalled );
 // applist
@@ -545,6 +542,21 @@ public:
 	STEAM_CALLBACK(cSteamCallbacksHandler, OnLeaderboardScoresDownloaded, LeaderboardScoresDownloaded_t, m_LeaderboardScoresDownloaded);
 	void OnDownloadedLeaderboard(LeaderboardScoresDownloaded_t *pResult, bool bIOFailure);
 	CCallResult< cSteamCallbacksHandler, LeaderboardScoresDownloaded_t> m_SteamCallResultLeaderboardScoresDownloaded;
+
+	//OnCreateItemResult was old function and OnItemCreate is the new one. old is never fired
+	STEAM_CALLBACK( cSteamCallbacksHandler, OnCreateItemResult, CreateItemResult_t, m_CreateItemResult );
+	void OnItemCreate(CreateItemResult_t *pResult, bool bIOFailure);
+	CCallResult< cSteamCallbacksHandler, CreateItemResult_t> m_SteamCallResultCreateItem;
+	
+	//N.B OnSteamUGCQueryCompleted never called (a parameters count mismatch),  old is never fired
+	STEAM_CALLBACK( cSteamCallbacksHandler, OnSteamUGCQueryCompleted, SteamUGCQueryCompleted_t, m_SteamUGCQueryCompleted );
+	void OnCompletedSteamUGCQuery(SteamUGCQueryCompleted_t *pResult, bool bIOFailure); 
+	CCallResult< cSteamCallbacksHandler, SteamUGCQueryCompleted_t> m_SteamCallResultSteamUGCQueryCompleted;
+
+	STEAM_CALLBACK( cSteamCallbacksHandler, OnSteamUGCRequestUGCDetailsResult, SteamUGCRequestUGCDetailsResult_t, m_SteamUGCRequestUGCDetailsResult );
+	void OnSteamUGCRequestUGCDetails(SteamUGCRequestUGCDetailsResult_t *pResult, bool bIOFailure); 
+	CCallResult< cSteamCallbacksHandler, SteamUGCRequestUGCDetailsResult_t> m_SteamCallResultSteamUGCRequestUGCDetails;
+
 	
 public:
     cSteamCallbacksHandler(cSteamCallbacks callbacks);

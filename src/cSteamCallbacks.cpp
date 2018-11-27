@@ -178,32 +178,46 @@ cSteamCallbacksHandler::cSteamCallbacksHandler(cSteamCallbacks callbacks):
 	cb = callbacks;
 }
 
+//OnCompletedSteamUGCQuery e OnSteamUGCQueryCompleted differiscono dal parametro!
+
+void cSteamCallbacksHandler::OnCompletedSteamUGCQuery(SteamUGCQueryCompleted_t *pResult, bool bIOFailure){
+	if (cb.OnSteamUGCQueryCompleted != nullptr) {
+		cb.OnSteamUGCQueryCompleted(pResult->m_handle, pResult->m_eResult, pResult->m_unNumResultsReturned, pResult->m_unTotalMatchingResults, pResult->m_bCachedData);
+	};
+}
+
+void cSteamCallbacksHandler::OnSteamUGCRequestUGCDetails(SteamUGCRequestUGCDetailsResult_t *pResult, bool bIOFailure){
+	if (cb.OnSteamUGCRequestUGCDetailsResult != nullptr) {
+		cb.OnSteamUGCRequestUGCDetailsResult(pResult->m_details, pResult->m_bCachedData);
+	};
+}
+
+void cSteamCallbacksHandler::OnItemCreate(CreateItemResult_t *pResult, bool bIOFailure){
+	if (cb.OnCreateItemResult != nullptr) {
+		cb.OnCreateItemResult(pResult->m_eResult, pResult->m_nPublishedFileId, pResult->m_bUserNeedsToAcceptWorkshopLegalAgreement);
+	};
+}
+
 void cSteamCallbacksHandler::OnFindLeaderboard(LeaderboardFindResult_t *pParam, bool bIOFailure)
 {
-	LogToFile("OnFindLeaderboard->1");
 	if (cb.OnLeaderboardFindResult != nullptr) {
 		cb.OnLeaderboardFindResult(pParam->m_hSteamLeaderboard, pParam->m_bLeaderboardFound);
 	};
-	LogToFile("OnFindLeaderboard->2");
 }
 
 void cSteamCallbacksHandler::OnUploadedLeaderboard(LeaderboardScoreUploaded_t *pParam, bool bIOFailure)
 {
-	LogToFile("OnUploadedLeaderboard->1");
 	if (cb.OnLeaderboardScoreUploaded != nullptr) {
 		cb.OnLeaderboardScoreUploaded(pParam->m_bSuccess, pParam->m_hSteamLeaderboard,pParam->m_nScore,
 			pParam->m_bScoreChanged, pParam->m_nGlobalRankNew, pParam->m_nGlobalRankPrevious);
 	};
-	LogToFile("OnUploadedLeaderboard->2");
 }
 
 void cSteamCallbacksHandler::OnDownloadedLeaderboard(LeaderboardScoresDownloaded_t *pParam, bool bIOFailure)
 {
-	LogToFile("OnUploadedLeaderboard->1");
 	if (cb.OnLeaderboardScoresDownloaded != nullptr) {
 		cb.OnLeaderboardScoresDownloaded(pParam->m_hSteamLeaderboard, pParam->m_hSteamLeaderboardEntries, pParam->m_cEntryCount);
 	};
-	LogToFile("OnUploadedLeaderboard->2");
 }
 
 // friends 
@@ -382,16 +396,23 @@ void cSteamCallbacksHandler::OnSteamAppUninstalled(SteamAppUninstalled_t *pParam
 // UGC
 void cSteamCallbacksHandler::OnSteamUGCQueryCompleted(SteamUGCQueryCompleted_t *pParam)
 {
-	if (cb.OnSteamUGCQueryCompleted!=nullptr){ cb.OnSteamUGCQueryCompleted(pParam->m_handle,pParam->m_eResult,pParam->m_unNumResultsReturned,pParam->m_unTotalMatchingResults,pParam->m_bCachedData); };
+	if (cb.OnSteamUGCQueryCompleted!=nullptr){ 
+		cb.OnSteamUGCQueryCompleted(pParam->m_handle,pParam->m_eResult,pParam->m_unNumResultsReturned,pParam->m_unTotalMatchingResults,pParam->m_bCachedData); 
+	};
 }
+
 void cSteamCallbacksHandler::OnSteamUGCRequestUGCDetailsResult(SteamUGCRequestUGCDetailsResult_t *pParam)
 {
 	if (cb.OnSteamUGCRequestUGCDetailsResult!=nullptr){ cb.OnSteamUGCRequestUGCDetailsResult(pParam->m_details,pParam->m_bCachedData); };
 }
+
 void cSteamCallbacksHandler::OnCreateItemResult(CreateItemResult_t *pParam)
 {
-	if (cb.OnCreateItemResult!=nullptr){ cb.OnCreateItemResult(pParam->m_eResult,pParam->m_nPublishedFileId,pParam->m_bUserNeedsToAcceptWorkshopLegalAgreement); };
+	if (cb.OnCreateItemResult!=nullptr){ 
+		cb.OnCreateItemResult(pParam->m_eResult,pParam->m_nPublishedFileId,pParam->m_bUserNeedsToAcceptWorkshopLegalAgreement); 
+	};
 }
+
 void cSteamCallbacksHandler::OnSubmitItemUpdateResult(SubmitItemUpdateResult_t *pParam)
 {
 	if (cb.OnSubmitItemUpdateResult!=nullptr){ cb.OnSubmitItemUpdateResult(pParam->m_eResult,pParam->m_bUserNeedsToAcceptWorkshopLegalAgreement); };

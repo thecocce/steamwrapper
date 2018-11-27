@@ -6,6 +6,8 @@
 //----------------------------------------------------
 #include "libMain.h"
 
+extern cSteamCallbacksHandler *CallbacksHandler;
+
 // Query UGC associated with a user. Creator app id or consumer app id must be valid and be set to the current rning app. Page should start at 1.
 UGCQueryHandle_t SteamUGC_CreateQueryUserUGCRequest( AccountID_t AccountID, EUserUGCList ListType, EUGCMatchingUGCType MatchingUGCType, EUserUGCListSortOrder SortOrder, AppId_t CreatorAppID, AppId_t ConsumerAppID, uint32 Page ){return SteamUGC()->CreateQueryUserUGCRequest(AccountID, ListType, MatchingUGCType, SortOrder, CreatorAppID, ConsumerAppID, Page);};
 
@@ -13,7 +15,12 @@ UGCQueryHandle_t SteamUGC_CreateQueryUserUGCRequest( AccountID_t AccountID, EUse
 UGCQueryHandle_t SteamUGC_CreateQueryAllUGCRequest( EUGCQuery QueryType, EUGCMatchingUGCType MatchingeMatchingUGCTypeFileType, AppId_t CreatorAppID, AppId_t ConsumerAppID, uint32 Page ){return SteamUGC()->CreateQueryAllUGCRequest(QueryType, MatchingeMatchingUGCTypeFileType, CreatorAppID, ConsumerAppID, Page);};
 
 // Send the query to Steam
-SteamAPICall_t SteamUGC_SendQueryUGCRequest( UGCQueryHandle_t handle ){return SteamUGC()->SendQueryUGCRequest(handle);};
+SteamAPICall_t SteamUGC_SendQueryUGCRequest( UGCQueryHandle_t handle ){
+	SteamAPICall_t hSteamAPICall = SteamUGC()->SendQueryUGCRequest(handle);
+	if (CallbacksHandler != nullptr)
+		CallbacksHandler->m_SteamCallResultSteamUGCQueryCompleted.Set(hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnCompletedSteamUGCQuery); //OnCompletedSteamUGCQuery // OnSteamUGCQueryCompleted
+	return hSteamAPICall;
+};
 
 // Retrieve an individual result after receiving the callback for querying UGC
 bool SteamUGC_GetQueryUGCResult( UGCQueryHandle_t handle, uint32 index, SteamUGCDetails_t *Details ){return SteamUGC()->GetQueryUGCResult(handle,index,Details);};
@@ -36,12 +43,24 @@ bool SteamUGC_SetMatchAnyTag( UGCQueryHandle_t handle, bool MatchAnyTag ){return
 bool SteamUGC_SetSearchText( UGCQueryHandle_t handle, const char *SearchText ){return SteamUGC()->SetSearchText(handle,SearchText);};
 bool SteamUGC_SetRankedByTrendDays( UGCQueryHandle_t handle, uint32 Days ){return SteamUGC()->SetRankedByTrendDays(handle,Days);};
 
+
 // Request full details for one piece of UGC
-SteamAPICall_t SteamUGC_RequestUGCDetails( PublishedFileId_t PublishedFileID, uint32 MaxAgeSeconds ){return SteamUGC()->RequestUGCDetails(PublishedFileID,MaxAgeSeconds);};
+SteamAPICall_t SteamUGC_RequestUGCDetails( PublishedFileId_t PublishedFileID, uint32 MaxAgeSeconds ){
+	SteamAPICall_t hSteamAPICall = SteamUGC()->RequestUGCDetails(PublishedFileID,MaxAgeSeconds);
+	if (CallbacksHandler != nullptr)
+		CallbacksHandler->m_SteamCallResultSteamUGCRequestUGCDetails.Set(hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnSteamUGCRequestUGCDetails);
+	return hSteamAPICall;
+};
 
 // Steam Workshop Creator API
 // create new item for this app with no content attached yet
-SteamAPICall_t SteamUGC_CreateItem( AppId_t ConsumerAppId, EWorkshopFileType FileType ){return SteamUGC()->CreateItem(ConsumerAppId,FileType);}; 
+SteamAPICall_t SteamUGC_CreateItem( AppId_t ConsumerAppId, EWorkshopFileType FileType ){
+	SteamAPICall_t hSteamAPICall = SteamUGC()->CreateItem(ConsumerAppId,FileType);
+	if (CallbacksHandler != nullptr)
+		CallbacksHandler->m_SteamCallResultCreateItem.Set(hSteamAPICall, CallbacksHandler, &cSteamCallbacksHandler::OnItemCreate);
+	return hSteamAPICall;
+
+}; 
 
 // start an UGC item update. Set changed properties before commiting update with CommitItemUpdate()
 UGCUpdateHandle_t SteamUGC_StartItemUpdate( AppId_t ConsumerAppId, PublishedFileId_t PublishedFileID ){return SteamUGC()->StartItemUpdate(ConsumerAppId,PublishedFileID);}; 
