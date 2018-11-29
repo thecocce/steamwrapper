@@ -10,6 +10,11 @@ Supported languages: C/C++, Delphi/Lazarus
 
 Fixed callbacks:
 
+29/11/2018 (Andy gift)
+* OnCreateItemResult
+* OnSteamUGCQueryCompleted
+* OnSteamUGCRequestUGCDetailsResult
+
 14/03/2016
 * FindOrCreateLeaderboard
 
