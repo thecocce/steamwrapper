@@ -102,6 +102,7 @@
     <ClCompile Include="..\..\src\cSteamUserStats.cpp" />
     <ClCompile Include="..\..\src\cSteamUtils.cpp" />
     <ClCompile Include="..\..\src\cSteamVR.cpp" />
+    <ClCompile Include="..\..\src\Log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\libMain.h" />

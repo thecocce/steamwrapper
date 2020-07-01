@@ -1,93 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Файлы исходного кода">
+    <Filter Include="sources">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Заголовочные файлы">
+    <Filter Include="headers">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\cSteamClient.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamMusicRemote.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamHTTP.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamUnifiedMessages.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamController.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamUGC.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamAppList.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamHTMLSurface.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamApps.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamFriends.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamMatchmaking.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamMusic.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamNetworking.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamRemoteStorage.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamScreenshots.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamUser.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamUserStats.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamUtils.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamGameServer.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamGameServerStats.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamVR.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamSystem.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\cSteamCallbacks.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Log.cpp">
+      <Filter>sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\libMain.h">
-      <Filter>Заголовочные файлы</Filter>
+      <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
