@@ -3,9 +3,9 @@ program SteamWrapperTest;
 uses
   Vcl.Forms,
   Unit1 in 'Unit1.pas' {Form1},
-  Steamworks in 'includes\Steamworks.pas',
-  SteamworksClasses in 'includes\SteamworksClasses.pas',
-  SteamworksTypes in 'includes\SteamworksTypes.pas';
+  SteamworksClasses in '..\..\includes\SteamworksClasses.pas',
+  SteamworksTypes in '..\..\includes\SteamworksTypes.pas',
+  Steamworks in '..\..\includes\Steamworks.pas';
 
 {$R *.res}
 

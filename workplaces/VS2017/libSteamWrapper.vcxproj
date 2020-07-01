@@ -175,8 +175,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>..\..\src;..\..\sdk\public\steam;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\sdk\redistributable_bin;$(LibraryPath)</LibraryPath>
-    <OutDir>..\..\release\</OutDir>
+    <LibraryPath>..\..\sdk\redistributable_bin\win64;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\release64\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -315,7 +315,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>steam_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>steam_api64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>Exports.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
