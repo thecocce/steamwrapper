@@ -22,12 +22,16 @@ Fixed callbacks:
 * OnLeaderboardScoreUploaded 
 * OnLeaderboardScoreDownloaded
 
+24/07/2020
+* Porting DLL to VS2017 - x86 and x64
+* Porting Delphi code to x64
 
 
 Games using this wrapper:
 * [Tragedy of Prince Rupert](http://store.steampowered.com/app/611850/Tragedy_of_Prince_Rupert/)
 * [Legie](http://store.steampowered.com/app/426050/Legie)
 * [XSprite](https://store.steampowered.com/app/983780/XSprite/)
+* [Flashpoint Campaigns: Red Storm](https://store.steampowered.com/app/330720/Flashpoint_Campaigns_Red_Storm_Players_Edition/)
 
 
 
