@@ -1,10 +1,14 @@
 //----------------------------------------------------
 // © 2015 Andrey Volia
+// © 2016-2020 Francesco Balzani - thecocce
 // 
 // License: MIT
-// Site: https://github.com/voliaandrey/steamwrapper
+// Site: https://github.com/thecocce/steamwrapper
 //----------------------------------------------------
 #include "libMain.h"
+#include <string>
+
+using namespace std;
 
 // returns the HSteamUser this interface represents
 // this is only used internally by the API, and by a few select interfaces that support multi-user
@@ -15,9 +19,26 @@ HSteamUser SteamUser_GetSteamUser(){return SteamUser()->GetHSteamUser();};
 // The Steam client will automatically be trying to recreate the connection as often as possible.
 bool SteamUser_IsLoggedOn(){return SteamUser()->BLoggedOn();};
 
+string genString(uint64_t val)
+{
+	return std::to_string(val);
+}
+
 // returns the CSteamID of the account currently logged into the Steam client
 // a CSteamID is a unique identifier for an account, and used to differentiate users in all parts of the Steamworks API
-CSteamID SteamUser_GetSteamID(){return SteamUser()->GetSteamID();};
+CSteamID SteamUser_GetSteamID(){
+	
+	CSteamID sid = SteamUser()->GetSteamID();
+	uint64 val = sid.ConvertToUint64();
+	LogToFile("CSteamID:" + genString(val));
+	return SteamUser()->GetSteamID();
+};
+
+
+
+
+
+
 
 // Multiplayer Authentication functions
 

@@ -1,5 +1,6 @@
-//----------------------------------------------------
+﻿//----------------------------------------------------
 // © 2015 Andrey Volia
+// © 2016-2018 Francesco Balzani - thecocce
 // 
 // License: MIT
 // Site: https://github.com/voliaandrey/steamwrapper
@@ -29,7 +30,7 @@ const
 {$ENDREGION}
 {$REGION 'System'}
   // init and start wrapper
-function System_InitWrapper(): boolean; cdecl; external WRAPPERLIB;
+function System_InitWrapper(): boolean; stdcall; cdecl; external WRAPPERLIB;
 // shutdown wrapper
 procedure System_ShutdownWrapper(); cdecl; external WRAPPERLIB;
 // checks if a local Steam client is running

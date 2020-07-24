@@ -1,5 +1,5 @@
 //----------------------------------------------------
-// @ 2016 Francesco Balzani - thecocce
+// © 2016-2020 Francesco Balzani - thecocce
 // 
 // License: MIT
 // Site: https://github.com/thecocce/steamwrapper
@@ -10,25 +10,40 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
+#include <string>
 
-Log::Log(char* filename) {
-	#ifdef DEBUG
-		m_stream.open(filename);
-	#endif
+using namespace std;
+
+Log::Log(string filename) {
+	//#ifdef _DEBUG
+	logfilename = filename;
+	//#endif
 }
 
-void Log::Write(char* logline){
-	#ifdef DEBUG
+inline string getCurrentDateTime(string s) {
 	time_t now = time(0);
-	struct tm* tm = localtime(&now);   
-	m_stream << tm->tm_year+1900 << '/' << tm->tm_mon << '/' << tm->tm_mday
-         << ' ' << tm->tm_hour << ':' << tm->tm_min << ':' << tm->tm_sec << ": ";
-    m_stream << logline << "\n";
-	#endif
+	struct tm  tstruct;
+	char  buf[80];
+	tstruct = *localtime(&now);
+	if (s == "now")
+		strftime(buf, sizeof(buf), "%Y-%m-%d %X", &tstruct);
+	else if (s == "date")
+		strftime(buf, sizeof(buf), "%Y-%m-%d", &tstruct);
+	return string(buf);
+};
+
+void Log::Write(string logline){
+	//#ifdef _DEBUG
+	
+	string now = getCurrentDateTime("now");
+	ofstream ofs(logfilename.c_str(), std::ios_base::out | std::ios_base::app);
+	ofs << now << '\t' << logline << '\n';
+	ofs.close();
+	//#endif
 }
 
 Log::~Log(){
-	#ifdef DEBUG
-		m_stream.close();
-	#endif
+	//#ifdef _DEBUG
+		
+	//#endif
 }

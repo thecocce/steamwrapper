@@ -1,4 +1,4 @@
-//----------------------------------------------------
+﻿//----------------------------------------------------
 // © 2015 Andrey Volia
 // 
 // License: MIT
@@ -530,7 +530,7 @@ Type
 
   TSteamID = record
   private
-    Data1: int32; // 32 bit
+    Data1: uint32; // 32 bit
     Data2: SmallInt; // 16 bit
     Data3: Byte; // 8 bit
     Data4: Byte; // 8 bit

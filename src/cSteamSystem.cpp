@@ -1,10 +1,13 @@
 //----------------------------------------------------
 // © 2015 Andrey Volia
+// © 2016-2020 Francesco Balzani - thecocce
 // 
 // License: MIT
-// Site: https://github.com/voliaandrey/steamwrapper
+// Site: https://github.com/thecocce/steamwrapper
 //----------------------------------------------------
 #include "libMain.h"
+
+using namespace std;
 
 Log *pLog = new Log("debug.log");
 
@@ -41,6 +44,6 @@ void System_SetMiniDumpComment(const char *Msg){SteamAPI_SetMiniDumpComment(Msg)
 // All registered listener functions will be invoked during this call, in the callers thread context.
 void System_RunCallbacks(){SteamAPI_RunCallbacks();};
 
-void LogToFile(char* str){
+void LogToFile(string str){
 	pLog->Write(str);
 }

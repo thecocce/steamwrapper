@@ -1,6 +1,6 @@
 //----------------------------------------------------
 // © 2015 Andrey Volia
-// @ 2016-2018 Francesco Balzani - thecocce
+// © 2016-2018 Francesco Balzani - thecocce
 //
 // License: MIT
 // Site: https://github.com/thecocce/steamwrapper

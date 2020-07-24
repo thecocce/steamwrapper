@@ -1,14 +1,21 @@
-#include <fstream>
+//----------------------------------------------------
+// © 2016-2020 Francesco Balzani - thecocce
+// 
+// License: MIT
+// Site: https://github.com/thecocce/steamwrapper
+//----------------------------------------------------
 
-void LogToFile(char* str);
+#include <fstream>
 
 using namespace std;
 
+void LogToFile(string str);
+
 class Log {
   public:
-    Log(char* filename);
+    Log(string filename);
     ~Log();
-    void Write(char* logline);
+    void Write(string logline);
   private:
-    ofstream m_stream;
+	  string logfilename;
 };
