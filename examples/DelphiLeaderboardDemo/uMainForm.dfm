@@ -29,7 +29,7 @@ object Form2: TForm2
     Height = 189
     Align = alBottom
     ScrollBars = ssVertical
-    TabOrder = 0
+    TabOrder = 5
   end
   object Button11: TButton
     Left = 8
@@ -37,7 +37,7 @@ object Form2: TForm2
     Width = 142
     Height = 25
     Caption = 'Get user status and ID'
-    TabOrder = 1
+    TabOrder = 0
     OnClick = Button11Click
   end
   object Button12: TButton
@@ -46,7 +46,7 @@ object Form2: TForm2
     Width = 177
     Height = 25
     Caption = 'FindOrCreateLeaderboard'
-    TabOrder = 2
+    TabOrder = 1
     OnClick = Button12Click
   end
   object Button17: TButton
@@ -55,7 +55,7 @@ object Form2: TForm2
     Width = 177
     Height = 25
     Caption = 'UploadLeaderboardScore'
-    TabOrder = 3
+    TabOrder = 2
     OnClick = Button17Click
   end
   object Button18: TButton
@@ -64,7 +64,7 @@ object Form2: TForm2
     Width = 177
     Height = 25
     Caption = 'DownloadLeaderboardScore'
-    TabOrder = 4
+    TabOrder = 3
     OnClick = Button18Click
   end
   object Edit1: TEdit
@@ -72,7 +72,7 @@ object Form2: TForm2
     Top = 170
     Width = 153
     Height = 21
-    TabOrder = 5
+    TabOrder = 4
     Text = '100'
   end
   object Timer1: TTimer

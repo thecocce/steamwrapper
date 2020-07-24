@@ -64,7 +64,7 @@ var
   sID, x: TSteamID;
   name:PAnsiChar;
 begin
-  sID := SteamUser_GetSteamID;
+  SteamUser_GetSteamID(sID);
 
   if SteamUser_IsLoggedOn then
     Log('SteamUser: is logged on')
