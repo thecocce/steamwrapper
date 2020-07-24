@@ -113,13 +113,12 @@ end;
 procedure TForm1.InitAccountInfo;
 var
   sID: TSteamID;
+  val:uint64;
   at: TAccountType;
   univ: TUniverse;
   s: AnsiString;
-  pt: Pointer;
 begin
-  // pt := SteamUser_GetSteamID;
-  sID := SteamUser_GetSteamID;
+  SteamUser_GetSteamID(sID);
 
   if SteamUser_IsLoggedOn then
     Log('SteamUser: is logged on')

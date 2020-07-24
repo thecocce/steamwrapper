@@ -319,7 +319,7 @@ function SteamUser_IsLoggedOn(): boolean; cdecl; external WRAPPERLIB;
 
 // returns the TSteamID of the account currently logged into the Steam client
 // a TSteamID is a unique identifier for an account; and used to differentiate users in all parts of the Steamworks API
-function SteamUser_GetSteamID(): TSteamID; cdecl; external WRAPPERLIB;
+procedure SteamUser_GetSteamID(var sid:TSteamID); cdecl; external WRAPPERLIB;
 
 // Multiplayer Authentication functions
 

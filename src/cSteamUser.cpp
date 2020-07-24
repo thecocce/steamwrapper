@@ -26,19 +26,13 @@ string genString(uint64_t val)
 
 // returns the CSteamID of the account currently logged into the Steam client
 // a CSteamID is a unique identifier for an account, and used to differentiate users in all parts of the Steamworks API
-CSteamID SteamUser_GetSteamID(){
-	
-	CSteamID sid = SteamUser()->GetSteamID();
-	uint64 val = sid.ConvertToUint64();
-	LogToFile("CSteamID:" + genString(val));
-	return SteamUser()->GetSteamID();
+void SteamUser_GetSteamID(CSteamID & sid) {
+	sid = SteamUser()->GetSteamID();
+	#ifdef _DEBUG
+		uint64 val = sid.ConvertToUint64();
+		LogToFile("CSteamID:" + genString(val));
+	#endif
 };
-
-
-
-
-
-
 
 // Multiplayer Authentication functions
 

@@ -541,7 +541,7 @@ Type
     function GetUniverse: TUniverse; // universe this account belongs to
   end;
 
-  pSteamID = ^TSteamID;
+  PSteamID = ^TSteamID;
 
   TMouseCursor = (
    dc_user = 0,

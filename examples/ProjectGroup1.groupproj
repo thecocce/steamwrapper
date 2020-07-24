@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{049EC963-049B-4EB5-8827-5981437D718F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DelphiLeaderboardDemo\DelphiLeaderboardDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SteamWrapperTest\SteamWrapperTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiLeaderboardDemo">
+        <MSBuild Projects="DelphiLeaderboardDemo\DelphiLeaderboardDemo.dproj"/>
+    </Target>
+    <Target Name="DelphiLeaderboardDemo:Clean">
+        <MSBuild Projects="DelphiLeaderboardDemo\DelphiLeaderboardDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiLeaderboardDemo:Make">
+        <MSBuild Projects="DelphiLeaderboardDemo\DelphiLeaderboardDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SteamWrapperTest">
+        <MSBuild Projects="SteamWrapperTest\SteamWrapperTest.dproj"/>
+    </Target>
+    <Target Name="SteamWrapperTest:Clean">
+        <MSBuild Projects="SteamWrapperTest\SteamWrapperTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SteamWrapperTest:Make">
+        <MSBuild Projects="SteamWrapperTest\SteamWrapperTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiLeaderboardDemo;SteamWrapperTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiLeaderboardDemo:Clean;SteamWrapperTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiLeaderboardDemo:Make;SteamWrapperTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
