@@ -22,7 +22,7 @@ Fixed callbacks:
 * OnLeaderboardScoreUploaded 
 * OnLeaderboardScoreDownloaded
 
-24/07/2020
+24/07/2020 (thanks to Robert C. for donation)
 * Porting DLL to VS2017 - x86 and x64
 * Porting Delphi code to x64
 
