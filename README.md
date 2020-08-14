@@ -7,13 +7,15 @@ Steamworks SDK v1.31 (newer may be in the future)
 
 Supported languages: C/C++, Delphi/Lazarus
 
-
-Fixed callbacks:
+24/07/2020 (thanks to @RCrandall44 for donation)
+* Porting DLL to VS2017 - x86 and x64
+* Porting Delphi code to x64
 
 29/11/2018 (Andy gift)
-* OnCreateItemResult
-* OnSteamUGCQueryCompleted
-* OnSteamUGCRequestUGCDetailsResult
+* Fixed callbacks 
+ * OnCreateItemResult
+ * OnSteamUGCQueryCompleted
+ * OnSteamUGCRequestUGCDetailsResult
 
 14/03/2016
 * FindOrCreateLeaderboard
@@ -21,10 +23,6 @@ Fixed callbacks:
 31/12/2016 (a Vit new year gift)
 * OnLeaderboardScoreUploaded 
 * OnLeaderboardScoreDownloaded
-
-24/07/2020 (thanks to @RCrandall44 for donation)
-* Porting DLL to VS2017 - x86 and x64
-* Porting Delphi code to x64
 
 
 Games using this wrapper:
