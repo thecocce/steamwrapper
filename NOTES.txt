@@ -4,6 +4,6 @@ NOTES:
 2. For all info and full API documentation please go to Steamworks:
 https://partner.steamgames.com/home/steamworks
 
-3. For build ASTRON3D Steam API Wrapper you need Visual Studio 2010 
+3. For build ASTRON3D Steam API Wrapper you need Visual Studio 2017 
 (and up) and Steamworks SDK v1.31.
 
