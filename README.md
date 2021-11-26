@@ -30,7 +30,7 @@ Games using this wrapper:
 * [Legie](http://store.steampowered.com/app/426050/Legie)
 * [XSprite](https://store.steampowered.com/app/983780/XSprite/)
 * [Flashpoint Campaigns: Red Storm](https://store.steampowered.com/app/330720/Flashpoint_Campaigns_Red_Storm_Players_Edition/)
-
+* [Slot_Idler](https://store.steampowered.com/app/1804360/Slot_Idler/)
 
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/thecocce)
