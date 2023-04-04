@@ -3,17 +3,15 @@ object Form2: TForm2
   Top = 140
   Caption = '[ASTRON3D Steamworks Wrapper] Various features demo'
   ClientHeight = 399
-  ClientWidth = 684
+  ClientWidth = 741
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 192
@@ -25,11 +23,12 @@ object Form2: TForm2
   object Memo1: TMemo
     Left = 0
     Top = 210
-    Width = 684
+    Width = 741
     Height = 189
     Align = alBottom
     ScrollBars = ssVertical
     TabOrder = 5
+    ExplicitWidth = 684
   end
   object Button11: TButton
     Left = 8
@@ -75,11 +74,20 @@ object Form2: TForm2
     TabOrder = 4
     Text = '100'
   end
+  object Button1: TButton
+    Left = 440
+    Top = 8
+    Width = 142
+    Height = 25
+    Caption = 'Get Steam User Auth Token'
+    TabOrder = 6
+    OnClick = Button1Click
+  end
   object Timer1: TTimer
     Enabled = False
     Interval = 30
     OnTimer = Timer1Timer
-    Left = 224
+    Left = 168
     Top = 8
   end
 end

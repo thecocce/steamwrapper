@@ -24,23 +24,28 @@ type
     Button18: TButton;
     Label1: TLabel;
     Edit1: TEdit;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure Button11Click(Sender: TObject);
     procedure Button12Click(Sender: TObject);
     procedure Button17Click(Sender: TObject);
     procedure Button18Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
-    { Private declarations }
+
+    function GetSteamUserAuthToken: string;
   public
-    { Public declarations }
   end;
+
+// TByteArr = array of Byte;
 
 var
   Form2: TForm2;
   SteamCallbacks: TSteamCallbacks;
   r: TSteamAPICall;
   CurrentLeaderboard: uint64;
+  FIsSteamWaiting:Boolean;
 
 implementation
 
@@ -49,6 +54,12 @@ implementation
 procedure Log(s: string);
 begin
   Form2.Memo1.Lines.Add(s);
+end;
+
+procedure OnGetAuthSessionTicketResponse(AuthTicket: uint32; eResult: integer); cdecl;
+begin
+  FIsSteamWaiting := False;
+  Log( 'OnGetAuthSessionTicketResponse - AuthTicket: ' + AuthTicket.ToString + '  - Result:'+ eResult.ToString);
 end;
 
 procedure WarnHook(a: integer; b: pAnsiChar); cdecl;
@@ -110,7 +121,7 @@ begin
     for i := 0 to EntryCount - 1 do
       if SteamUserStats_GetDownloadedLeaderboardEntry(SteamLeaderboardEntries, i{index}, @LeaderboardEntry, 0, 0) then
       begin
-    //show entry
+        //show entry
         Log(inttostr(LeaderboardEntry.GlobalRank) + '. ' + SteamFriends_GetFriendPersonaName(LeaderboardEntry.steamIDUser) + ' score: ' + inttostr(LeaderboardEntry.Score));
       end;
 
@@ -132,6 +143,9 @@ begin
   SteamCallbacks.OnLeaderboardScoreUploaded := OnLeaderboardScoreUploaded;
   SteamCallbacks.OnLeaderboardScoresDownloaded := OnLeaderboardScoreDownloaded;
 
+  SteamCallbacks.OnGetAuthSessionTicketResponse := OnGetAuthSessionTicketResponse;
+
+
   System_RegisterCallbacks(SteamCallbacks);
 
   Timer1.Enabled := true;
@@ -141,7 +155,7 @@ procedure TForm2.Button12Click(Sender: TObject);
 var
   myString: AnsiString;
   myCharPtr: PAnsiChar;
-  r: TSteamAPICall;
+  //r: TSteamAPICall;
 begin
 
   myString := 's';
@@ -182,6 +196,61 @@ begin
   end
   else
     showmessage('Use FindOrCreateLeaderboard first!');
+end;
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+ GetSteamUserAuthToken();
+end;
+
+function EncodeBase16(const Data : TBytes) : string;
+var
+  Text : PWideChar;
+begin
+  SetLength(Result, Length(Data) * 2);
+  Text := @Result[1];
+  BinToHex(Data, Text, Length(Data));
+end;
+
+function TForm2.GetSteamUserAuthToken: string;
+var
+  bufTicket : TBytes;
+begin
+  Log('GetSteamUserAuthToken...');
+  result := '';
+
+  // Steam must be connected and running etc.
+  result := '';
+  SetLength(bufTicket, 1024);
+  var cTicketSize : uint32;
+  var FSteamTicketHandle := SteamUser_GetAuthSessionTicket(@bufTicket[0], 1024, @cTicketSize);
+  Log('FSteamTicketHandle: ' + FSteamTicketHandle.ToString);
+
+  if FSteamTicketHandle <> k_HAuthTicketInvalid then begin
+  
+//    --> DISABLED BECAUSE IN THIS DEMO THE TIMER Timer1 IS ALIVE
+//    var ct := 0;
+//    while FIsSteamWaiting and (ct < 20) do
+//    begin
+//      System_RunCallbacks;
+//      Inc(ct);
+//      Sleep(10);
+//    end;
+
+    if not FIsSteamWaiting then
+    begin
+      setLength(bufTicket, cTicketSize);
+      //Your mode - using IntToHex
+      for var i := low(bufTicket) to high(bufTicket) do
+         result := result + IntToHex(bufTicket[i], 2);
+      Log('Result TOKEN mode 1: '#13#10+ result);
+
+      //Using function - BinToHex
+      var EncodedSteamTicket : string;
+      EncodedSteamTicket := EncodeBase16(bufTicket);
+      Log('Result TOKEN mode 2: '#13#10+ EncodedSteamTicket);
+    end
+  end;
 end;
 
 end.
