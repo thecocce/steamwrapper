@@ -7,6 +7,9 @@ Steamworks SDK v1.31 (newer may be in the future)
 
 Supported languages: C/C++, Delphi/Lazarus
 
+04/04/2023
+* Adding DLL target to VS2022 - x86 and x64
+
 24/07/2020 (thanks to @RCrandall44 for donation)
 * Porting DLL to VS2017 - x86 and x64
 * Porting Delphi code to x64
